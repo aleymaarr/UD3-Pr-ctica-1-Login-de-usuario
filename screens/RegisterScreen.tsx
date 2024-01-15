@@ -51,12 +51,14 @@ const RegisterScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.label}>Name:</Text>
       <TextInput
         placeholder="Name"
         value={name}
         onChangeText={setName}
         style={styles.input}
       />
+      <Text style={styles.label}>Email:</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -64,6 +66,7 @@ const RegisterScreen = () => {
         style={styles.input}
         keyboardType="email-address"
       />
+      <Text style={styles.label}>Password:</Text>
       <TextInput
         placeholder="Password"
         value={password}
