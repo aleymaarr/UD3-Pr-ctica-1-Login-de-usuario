@@ -21,7 +21,7 @@ const RegisterScreen = () => {
     }
 
     try {
-      const response = await fetch("http://192.168.1.17:8888/users/register", {
+      const response = await fetch("http://192.168.1.133:8888/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,6 +48,7 @@ const RegisterScreen = () => {
       Alert.alert("Error de Conexión", "No se pudo conectar al servidor.");
     }
   };
+
   return (
     <View style={styles.container}>
       <TextInput

@@ -30,7 +30,39 @@ const LoginScreen = () => {
     ]);
   };
 
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://192.168.1.133:8888/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: usernameInput.trim(),
+          password: passwordInput.trim(),
+        }),
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        toggleIsUserLogged();
+        setUsername(usernameInput);
+        console.log("Login completed");
+        setLoginError(false);
+      } else {
+        showFailedLoginAlert();
+        setLoginError(true);
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+      showFailedLoginAlert();
+      setLoginError(true);
+    }
+  };
+
   const login = () => {
+    handleLogin();
+    /*
     const userData = {
       username: "Alejandro",
       password: "2002",
@@ -49,6 +81,7 @@ const LoginScreen = () => {
       showFailedLoginAlert();
       setLoginError(true);
     }
+    */
   };
 
   return (
