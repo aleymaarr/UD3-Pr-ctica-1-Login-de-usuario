@@ -10,6 +10,7 @@ import PortfolioScreen from "../screens/PersonalPortfolioScreen";
 import { useContext } from "react";
 import { LoginContext } from "../contexts/LoginContext";
 import LogoutScreen from "../screens/LogoutScreen";
+import RegisterScreen from "../screens/RegisterScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -48,6 +49,11 @@ const CustomDrawer = () => {
         name="Login"
         component={LoginScreen}
         options={{ title: "Login" }}
+      />
+      <Drawer.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: "Register" }}
       />
     </Drawer.Navigator>
   ) : (
