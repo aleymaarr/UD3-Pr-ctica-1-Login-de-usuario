@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View, Alert } from "react-native";
 import appColors from "../assets/styles/appColors";
 import { LoginContext } from "../contexts/LoginContext";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LogoutScreen = ({
   navigation,
@@ -11,7 +12,8 @@ const LogoutScreen = ({
 }) => {
   const { username, toggleIsUserLogged } = useContext(LoginContext);
 
-  const logoutHandle = () => {
+  const logoutHandle = async () => {
+    await AsyncStorage.removeItem("sessionToken");
     toggleIsUserLogged(false);
     console.log("Log out completed");
     Alert.alert("The session has been closed", "Sign in again to the app", [
